@@ -107,7 +107,6 @@ class TLB():
         self.hit = 0
         self.miss = 0
         self.alg_page_fault = method()
-        self.second_chance = SecondChance()
     
     def display_hits(self):
         print(f'TLB MISS: {self.miss}')
@@ -162,7 +161,7 @@ traces = read_trace('traces/bzip.trace').T
 address = traces[0]
 
 # Instance MMU object
-mmu = MMU(method = LRU)
+mmu = MMU(method = SecondChance)
 
 for adr in address:
     p = mmu.translate_addr(adr)
